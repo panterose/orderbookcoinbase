@@ -38,7 +38,10 @@ public class GsrcoinApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
-		LOG.info("STARTING ");
+		LOG.info("STARTING");
+		for (int i = 0; i < args.length; i++) {
+            System.out.println("arg " + i + "=" + args[i]);
+        }
         SpringApplication.run(GsrcoinApplication.class, args);
 		LOG.info("FINISHED !!!");
     }
@@ -51,9 +54,11 @@ public class GsrcoinApplication implements CommandLineRunner {
 
 		if (args.length > 2) {
 			throw new IllegalArgumentException("We need only 2 argument: the instrument to subscribe on Coinbase and the debug flag");
-		} else if (args.length > 1) {
+		} 
+		if (args.length > 1) {
 			trace = Boolean.parseBoolean(args[1]);
-		} else if (args.length > 0) {
+		} 
+		if (args.length > 0) {
 			inst = args[0];
 		}
 
